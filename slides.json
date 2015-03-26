@@ -5,7 +5,12 @@
 		"intro",
 		"history",
 		"background",
-		"components"
+		"case-study",
+		"components",
+		"custom-elements",
+		"shadow-dom",
+		"templates",
+		"html-imports"
 	],
 	"styles": [
 		"styles/slides.css"

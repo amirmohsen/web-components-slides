@@ -1,0 +1,8 @@
+.slide-centered {
+	display: block;
+	margin: 0 auto;
+}
+
+.fill-container {
+	max-width: 100%;
+}

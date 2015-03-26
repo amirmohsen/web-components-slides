@@ -1,0 +1,14 @@
+{
+	"title": "Web Components",
+	"author": "Amir Mohsen Abdolrazaghi",
+	"slides": [
+		"intro",
+		"history",
+		"background",
+		"components"
+	],
+	"styles": [
+		"styles/slides.css"
+	],
+	"output": "concat/all_slides.html"
+}

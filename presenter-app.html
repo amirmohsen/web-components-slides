@@ -1,0 +1,171 @@
+<presenter-slide id="presenter-app" header="Presenter app" subheader="An overview of this very app">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">index.html</h3>
+		</div>
+		<div class="panel-body">
+			<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;meta class=&quot;vp&quot;&gt;
+	&lt;title&gt;&lt;/title&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;./app/importer.html&quot;&gt;
+&lt;/head&gt;
+&lt;body unresolved&gt;
+	&lt;presenter-slideshow&gt;&lt;/presenter-slideshow&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		</div>
+	</div>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">importer.html</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="html">&lt;!-- bower:css --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
+&lt;!-- endinject --&gt;
+
+&lt;!-- bower:html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/bower_components/polymer/polymer.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/bower_components/twbs-grid/twbs-grid.html&quot;&gt;
+&lt;!-- endinject --&gt;
+
+&lt;!-- bower:js --&gt;
+&lt;script src=&quot;/bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+&lt;!-- endinject --&gt;
+
+&lt;!-- cdn:js --&gt;
+&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//cdn.craig.is/js/mousetrap/mousetrap.min.js?9d308&quot;&gt;&lt;/script&gt;
+&lt;!-- endinject --&gt;
+
+&lt;!-- styles:css --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/darkly.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/global.css&quot;&gt;
+&lt;!-- endinject --&gt;
+
+&lt;!-- elements:html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/app/managers/presenter-slideshow/presenter-slideshow.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-resizable/presenter-resizable.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-frame/presenter-frame.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-sidebar/presenter-sidebar.html&quot;&gt;
+&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-slide/presenter-slide.html&quot;&gt;
+&lt;!-- endinject --&gt;</code></pre>
+			</div>
+		</div>
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title">presenter-slideshow.html</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="html">&lt;polymer-element name=&quot;presenter-slideshow&quot; constructor=&quot;PresenterSlideshow&quot;&gt;
+	&lt;template&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/darkly.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;presenter-slideshow.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/shared.css&quot;&gt;
+		&lt;div class=&quot;container-fluid&quot;&gt;
+			&lt;nav id=&quot;topbar&quot; class=&quot;navbar navbar-default&quot;&gt;
+				&lt;div class=&quot;container-fluid&quot;&gt;
+					&lt;p class=&quot;navbar-brand&quot;&gt;{{metadata.title}}&lt;/p&gt;
+					&lt;button class=&quot;btn btn-default navbar-btn navbar-right&quot;&gt;{{metadata.author}}&lt;/button&gt;
+				&lt;/div&gt;
+			&lt;/nav&gt;
+			&lt;bs-row&gt;
+				&lt;bs-col class=&quot;hidden-xs&quot; sm=&quot;2&quot;&gt;
+					&lt;presenter-sidebar id=&quot;sidebar&quot;&gt;&lt;/presenter-sidebar&gt;
+				&lt;/bs-col&gt;
+				&lt;bs-col xs=&quot;12&quot; sm=&quot;10&quot;&gt;
+					&lt;presenter-frame id=&quot;frame&quot;&gt;&lt;/presenter-frame&gt;
+				&lt;/bs-col&gt;
+			&lt;/bs-row&gt;
+		&lt;/div&gt;
+	&lt;/template&gt;
+	&lt;script src=&quot;presenter-slideshow.js&quot;&gt;&lt;/script&gt;
+&lt;/polymer-element&gt;</code></pre>
+			</div>
+		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">presenter-slideshow.css</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="css">:host {
+	display: block;
+	height: 100%;
+	overflow: hidden;
+}</code></pre>
+			</div>
+		</div>
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">presenter-slideshow.js</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="js">Polymer({
+
+	created: function() {
+		this.metadata = {
+			title: &quot;&quot;,
+			author: &quot;&quot;
+		};
+		this.slides = [];
+	},
+
+	domReady: function() {
+		this.loadSlides();
+		this.watchHeight();
+	},
+
+	updateTitle: function() {
+		$(&quot;title&quot;).text(this.metadata.title);
+	},
+
+	watchHeight: function() {
+		this.$.frame.adjustHeight(this.topbarHeight());
+		this.$.sidebar.adjustHeight(this.topbarHeight());
+		var self = this;
+		$(window).on(&quot;resize&quot;, function(){
+			self.$.frame.adjustHeight(self.topbarHeight());
+			self.$.sidebar.adjustHeight(self.topbarHeight());
+		});
+	},
+
+	topbarHeight: function() {
+		return $(this.$.topbar).outerHeight();
+	},
+
+	loadSlides: function() {
+		var self = this;
+		$.getJSON(&quot;./slides/slides.json&quot;, function(json){
+			self.metadata.title = json.title;
+			self.metadata.author = json.author;
+			self.slides = json.slides;
+			self.updateTitle();
+			Polymer.import([&quot;./slides/&quot;+json.output], function(){
+				var content = document
+					.querySelector(&#039;link[rel=&quot;import&quot;][href=&quot;./slides/&#039;+
+						json.output+&#039;&quot;]&#039;).import;
+
+				var template = content.querySelector(&quot;template#slide-repo&quot;);
+				self.$.frame.addSlides(template.content);
+				self.$.frame.setCurrentSlide(1);
+				self.$.sidebar.generateItems(template.content);
+			});
+			// self.addStyles(json.styles);
+		});
+	},
+
+	addStyles: function(styles) {
+		styles.forEach(function(style) {
+			var $link = $(&quot;&lt;link&gt;&quot;).attr({rel: &quot;stylesheet&quot;, href: &quot;./slides/&quot;+style});
+			$(&quot;head&quot;).append($link);
+		});		
+	}
+});</code></pre>
+			</div>
+		</div>
+</presenter-slide>

@@ -10,7 +10,14 @@
 		"custom-elements",
 		"shadow-dom",
 		"templates",
-		"html-imports"
+		"html-imports",
+		"polymer",
+		"presenter-app",
+		"compatibility",
+		"production",
+		"future",
+		"resources",
+		"thank-you"
 	],
 	"styles": [
 		"styles/slides.css"

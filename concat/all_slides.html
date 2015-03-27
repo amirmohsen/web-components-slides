@@ -1,7 +1,7 @@
 <template id="slide-repo">
 	<!-- slides:html -->
 	<presenter-slide id="intro" header="Web Components" subheader="Transforming the Web as we know it">
-		<img class="slide-centered" src="./slides/assets/logo_256x256.png">
+		<img class="slide-centered img-responsive" width="400" height="400" src="./slides/assets/logo_512x512.png">
 	</presenter-slide>
 	<presenter-slide id="history" header="History" subheader="Problems with current web development methods">
 		<div class="panel panel-danger">
@@ -69,6 +69,7 @@
 			</div>
 	</presenter-slide>
 	<presenter-slide id="case-study" header="Case Study" subheader="A look at a native element">
+		<p>Enable "Show user agent shadow DOM" in Chrome developer tools options.</p>
 		<div class="container-fluid">
 			<bs-row>
 				<bs-col xs="12" sm="6">
@@ -141,40 +142,382 @@
 		</div>
 	</presenter-slide>
 	<presenter-slide id="custom-elements" header="Custom Elements" subheader="The real deal">
+		<pre><code class="html">&lt;presenter-slide id=&quot;custom-elements&quot; header=&quot;Custom Elements&quot; subheader=&quot;The real deal&quot;&gt;... content ...&lt;/presenter-slide&gt;</code></pre>
+		<p>Custom Elements are true elements.</p>
+		<p>You can use standard DOM methods on Custom Elements, access their properties, attach event listeners, and style them using CSS just as easily as any div or span.</p>
+	</presenter-slide>
+	<presenter-slide id="shadow-dom" header="Shadow DOM" subheader="Magic">
+		<p>Shadow DOM separates content from presentation.</p>
+		<p>It finally brings true encapsulation to HTML and CSS.</p>
+		<p>And it's loads of fun to use!</p>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Shadow DOM for "presenter-slide" element</h3>
+			</div>
+			<div class="panel-body">
+				<img class="fill-container" src="./slides/assets/presenter-slide-shadow-dom.jpg">
+			</div>
+		</div>
+	</presenter-slide>
+	<presenter-slide id="templates" header="Templates" subheader="A helping hand">
+		<p>Loaded but not rendered.</p>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title">Define once</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="html">&lt;template id=&quot;fb-msg-tmpl&quot;&gt;&lt;facebook-message&gt;&lt;/facebook-message&gt;&lt;/template&gt;</code></pre>
+			</div>
+		</div>
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title">Use as many times as you want</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="html">&lt;template ref=&quot;fb-msg-tmpl&quot;&gt;&lt;/template&gt;</code></pre>
+			</div>
+		</div>
+	</presenter-slide>
+	<presenter-slide id="html-imports" header="HTML Imports" subheader="Isn't that just iframes? No!!!">
+		<p>Loaded and parsed but not rendered.</p>
+		<p>Perfect for dependency management.</p>
+		<pre><code class="html">&lt;link rel=&quot;import&quot; href=&quot;./app/importer.html&quot;&gt;</code></pre>
+	</presenter-slide>
+	<presenter-slide id="polymer" header="Polymer" subheader="To the rescue">
 		<div class="container-fluid">
 			<bs-row>
-				<bs-col xs="12" sm="6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							<h3 class="panel-title">Editor</h3>
-						</div>
-						<div class="panel-body">
-							<pre><code class="html">&lt;presenter-slide id=&quot;custom-elements&quot; header=&quot;Custom Elements&quot; subheader=&quot;The real deal&quot;&gt;&lt;/presenter-slide&gt;</code></pre>
-						</div>
-					</div>
+				<bs-col xs="12" sm="5">
+					<img class="slide-centered img-responsive extra-bottom-margin" width="350" src="./slides/assets/p-logo.png">
 				</bs-col>
-				<bs-col xs="12" sm="6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							<h3 class="panel-title">Browser</h3>
-						</div>
-						<div class="panel-body">
-							<p>Custom Elements are true elements.</p>
-							<p>You can use standard DOM methods on Custom Elements, access their properties, attach event listeners, and style them using CSS just as easily as any div or span.</p>
-						</div>
-					</div>
+				<bs-col xs="12" sm="7">
+					<a href="#" class="btn btn-danger btn-lg btn-block slide-centered">A library and not a framework</a>
+					<a href="#" class="btn btn-primary btn-lg btn-block slide-centered">A separate polyfill layer (webcomponents.js)</a>
+					<a href="#" class="btn btn-danger btn-lg btn-block slide-centered">A few years of pure experimentation</a>
+					<a href="#" class="btn btn-primary btn-lg btn-block slide-centered">Now on production track</a>
+					<a href="#" class="btn btn-danger btn-lg btn-block slide-centered">Great for app development</a>
+					<a href="#" class="btn btn-primary btn-lg btn-block slide-centered">The main drivers of Web Components spec</a>
+					<a href="#" class="btn btn-danger btn-lg btn-block slide-centered">By Google (no surprise there!)</a>
 				</bs-col>
 			</bs-row>
 		</div>
 	</presenter-slide>
-	<presenter-slide id="shadow-dom" header="Shadow DOM" subheader="Magic">
-		
+	<presenter-slide id="presenter-app" header="Presenter app" subheader="An overview of this very app">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">index.html</h3>
+			</div>
+			<div class="panel-body">
+				<pre><code class="html">&lt;!DOCTYPE html&gt;
+	&lt;html lang=&quot;en&quot;&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;meta class=&quot;vp&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;import&quot; href=&quot;./app/importer.html&quot;&gt;
+	&lt;/head&gt;
+	&lt;body unresolved&gt;
+		&lt;presenter-slideshow&gt;&lt;/presenter-slideshow&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;</code></pre>
+			</div>
+		</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">importer.html</h3>
+				</div>
+				<div class="panel-body">
+					<pre><code class="html">&lt;!-- bower:css --&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
+	&lt;!-- endinject --&gt;
+	
+	&lt;!-- bower:html --&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/bower_components/polymer/polymer.html&quot;&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/bower_components/twbs-grid/twbs-grid.html&quot;&gt;
+	&lt;!-- endinject --&gt;
+	
+	&lt;!-- bower:js --&gt;
+	&lt;script src=&quot;/bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;/bower_components/bootstrap/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+	&lt;!-- endinject --&gt;
+	
+	&lt;!-- cdn:js --&gt;
+	&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;//cdn.craig.is/js/mousetrap/mousetrap.min.js?9d308&quot;&gt;&lt;/script&gt;
+	&lt;!-- endinject --&gt;
+	
+	&lt;!-- styles:css --&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/darkly.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/global.css&quot;&gt;
+	&lt;!-- endinject --&gt;
+	
+	&lt;!-- elements:html --&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/app/managers/presenter-slideshow/presenter-slideshow.html&quot;&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-resizable/presenter-resizable.html&quot;&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-frame/presenter-frame.html&quot;&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-sidebar/presenter-sidebar.html&quot;&gt;
+	&lt;link rel=&quot;import&quot; href=&quot;/app/views/presenter-slide/presenter-slide.html&quot;&gt;
+	&lt;!-- endinject --&gt;</code></pre>
+				</div>
+			</div>
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h3 class="panel-title">presenter-slideshow.html</h3>
+				</div>
+				<div class="panel-body">
+					<pre><code class="html">&lt;polymer-element name=&quot;presenter-slideshow&quot; constructor=&quot;PresenterSlideshow&quot;&gt;
+		&lt;template&gt;
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;/bower_components/bootstrap/dist/css/bootstrap.css&quot;&gt;
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/darkly.css&quot;&gt;
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;presenter-slideshow.css&quot;&gt;
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;/app/styles/shared.css&quot;&gt;
+			&lt;div class=&quot;container-fluid&quot;&gt;
+				&lt;nav id=&quot;topbar&quot; class=&quot;navbar navbar-default&quot;&gt;
+					&lt;div class=&quot;container-fluid&quot;&gt;
+						&lt;p class=&quot;navbar-brand&quot;&gt;&lt;/p&gt;
+						&lt;button class=&quot;btn btn-default navbar-btn navbar-right&quot;&gt;&lt;/button&gt;
+					&lt;/div&gt;
+				&lt;/nav&gt;
+				&lt;bs-row&gt;
+					&lt;bs-col class=&quot;hidden-xs&quot; sm=&quot;2&quot;&gt;
+						&lt;presenter-sidebar id=&quot;sidebar&quot;&gt;&lt;/presenter-sidebar&gt;
+					&lt;/bs-col&gt;
+					&lt;bs-col xs=&quot;12&quot; sm=&quot;10&quot;&gt;
+						&lt;presenter-frame id=&quot;frame&quot;&gt;&lt;/presenter-frame&gt;
+					&lt;/bs-col&gt;
+				&lt;/bs-row&gt;
+			&lt;/div&gt;
+		&lt;/template&gt;
+		&lt;script src=&quot;presenter-slideshow.js&quot;&gt;&lt;/script&gt;
+	&lt;/polymer-element&gt;</code></pre>
+				</div>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">presenter-slideshow.css</h3>
+				</div>
+				<div class="panel-body">
+					<pre><code class="css">:host {
+		display: block;
+		height: 100%;
+		overflow: hidden;
+	}</code></pre>
+				</div>
+			</div>
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">presenter-slideshow.js</h3>
+				</div>
+				<div class="panel-body">
+					<pre><code class="js">Polymer({
+	
+		created: function() {
+			this.metadata = {
+				title: &quot;&quot;,
+				author: &quot;&quot;
+			};
+			this.slides = [];
+		},
+	
+		domReady: function() {
+			this.loadSlides();
+			this.watchHeight();
+		},
+	
+		updateTitle: function() {
+			$(&quot;title&quot;).text(this.metadata.title);
+		},
+	
+		watchHeight: function() {
+			this.$.frame.adjustHeight(this.topbarHeight());
+			this.$.sidebar.adjustHeight(this.topbarHeight());
+			var self = this;
+			$(window).on(&quot;resize&quot;, function(){
+				self.$.frame.adjustHeight(self.topbarHeight());
+				self.$.sidebar.adjustHeight(self.topbarHeight());
+			});
+		},
+	
+		topbarHeight: function() {
+			return $(this.$.topbar).outerHeight();
+		},
+	
+		loadSlides: function() {
+			var self = this;
+			$.getJSON(&quot;./slides/slides.json&quot;, function(json){
+				self.metadata.title = json.title;
+				self.metadata.author = json.author;
+				self.slides = json.slides;
+				self.updateTitle();
+				Polymer.import([&quot;./slides/&quot;+json.output], function(){
+					var content = document
+						.querySelector(&#039;link[rel=&quot;import&quot;][href=&quot;./slides/&#039;+
+							json.output+&#039;&quot;]&#039;).import;
+	
+					var template = content.querySelector(&quot;template#slide-repo&quot;);
+					self.$.frame.addSlides(template.content);
+					self.$.frame.setCurrentSlide(1);
+					self.$.sidebar.generateItems(template.content);
+				});
+				// self.addStyles(json.styles);
+			});
+		},
+	
+		addStyles: function(styles) {
+			styles.forEach(function(style) {
+				var $link = $(&quot;&lt;link&gt;&quot;).attr({rel: &quot;stylesheet&quot;, href: &quot;./slides/&quot;+style});
+				$(&quot;head&quot;).append($link);
+			});		
+		}
+	});</code></pre>
+				</div>
+			</div>
 	</presenter-slide>
-	<presenter-slide id="templates" header="Templates" subheader="A helping hand">
-		
+	<presenter-slide id="compatibility" header="Compatibility" subheader="">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Chrome/Opera</th>
+					<th>Firefox</th>
+					<th>IE 10+</th>
+					<th>IE 11+</th>
+					<th>Safari 7+</th>
+					<th>Safari 8+</th>
+					<th>Chrome Android</th>
+					<th>Mobile Safari</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Templates</td>
+					<td class="success">Native</td>
+					<td class="success">Native</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="success">Native</td>
+					<td class="success">Native</td>
+					<td class="success">Native</td>
+				</tr>
+				<tr>
+					<td>HTML Imports</td>
+					<td class="success">Native</td>
+					<td class="info">Dev flag*</td>
+					<td class="danger">Partial polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="success">Native</td>
+					<td class="warning">Full polyfill</td>
+				</tr>
+				<tr>
+					<td>Custom Elements</td>
+					<td class="success">Native</td>
+					<td class="info">Dev flag</td>
+					<td class="danger">Partial polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="success">Native</td>
+					<td class="warning">Full polyfill</td>
+				</tr>
+				<tr>
+					<td>Shadow DOM</td>
+					<td class="success">Native</td>
+					<td class="info">Dev flag</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="warning">Full polyfill</td>
+					<td class="success">Native</td>
+					<td class="warning">Full polyfill</td>
+				</tr>
+			</tbody>
+		</table>
+		<h6>* Mozilla announced they will not ship an implementation of HTML Imports.</h6>
 	</presenter-slide>
-	<presenter-slide id="html-imports" header="HTML Imports" subheader="Isn't that just iframes? No!!!">
-		
+	<presenter-slide id="production" header="Production" subheader="Already being used">
+		<div class="container-fluid">
+			<bs-row>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/salesforce_logo_detail.png">
+				</bs-col>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/News-Corp-logo.jpg">
+				</bs-col>
+			</bs-row>
+			<bs-row>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/Youtube.png">
+				</bs-col>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/06654624-photo-logo-quickoffice.jpg">
+				</bs-col>
+			</bs-row>
+			<bs-row>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/Google-Translate-icon.png">
+				</bs-col>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/google-music.png">
+				</bs-col>
+			</bs-row>
+			<bs-row>
+				<bs-col xs="12">
+					<img class="img-responsive center-block" src="./slides/assets/google-maps-santa-tracker.png">
+				</bs-col>
+			</bs-row>
+		</div>
+	</presenter-slide>
+	<presenter-slide id="future" header="Future" subheader="The yellow brick road">
+		<div class="container-fluid">
+			<bs-row>
+				<bs-col xs="12">
+					<a href="#" class="btn btn-warning btn-lg btn-block slide-centered">Polymer more stable. V1 expected in Q2 2015</a>
+					<a href="#" class="btn btn-info btn-lg btn-block slide-centered">Wider adoption by browser vendors</a>
+					<a href="#" class="btn btn-warning btn-lg btn-block slide-centered">Accessibility</a>
+					<a href="#" class="btn btn-info btn-lg btn-block slide-centered">Performance</a>
+					<a href="#" class="btn btn-warning btn-lg btn-block slide-centered">More features</a>
+				</bs-col>			
+			</bs-row>
+		</div>
+	</presenter-slide>
+	<presenter-slide id="resources" header="Resources" subheader="">
+		<div class="container-fluid">
+			<bs-row>
+				<bs-col xs="12">
+					<img class="img-responsive center-block" src="./slides/assets/octobiwan.jpg" style="height: 135px;">
+					<p class="center-block" style="text-align: center;">This app and the slides:<br>
+					github.com/amirmohsen/presenter<br>
+					github.com/amirmohsen/web-components-slides</p>
+				</bs-col>
+			</bs-row>
+			<bs-row>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/Google-Developers-rectangle.png" style="height: 135px;">
+					<p>youtube.com/user/GoogleDevelopers</p>
+				</bs-col>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/p-logo.png" style="height: 135px;">
+					<p>polymer-project.org</p>
+				</bs-col>
+			</bs-row>
+			<bs-row>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/Cooking-Bowl.svg" style="height: 135px;">
+					<p>component.kitchen</p>
+				</bs-col>
+				<bs-col xs="12" sm="6">
+					<img class="img-responsive center-block" src="./slides/assets/custom-elements-io.jpg" style="height: 135px;">
+					<p>customelements.io</p>
+				</bs-col>
+			</bs-row>
+		</div>
+	</presenter-slide>
+	<presenter-slide id="thank-you" header="Thank you" subheader="">
+		<img class="img-responsive center-block img-rounded" src="./slides/assets/IMG_2451.jpg" style="height: 300px;">
+		<p class="center-block" style="text-align: center;">@amirmohsena<br>
+		github.com/amirmohsen</p>
 	</presenter-slide>
 	<!-- endinject -->
 </template>
